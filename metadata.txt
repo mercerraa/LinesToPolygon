@@ -8,7 +8,7 @@ email=mercerraa@gmail.com
 license=GPL-3.0
 
 about=Convert group of lines to polygon
-tags=vectors
+tags=vector
 experimental=True
 
 tracker=https://github.com/mercerraa/LinesToPolygon/issues
