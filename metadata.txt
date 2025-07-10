@@ -1,0 +1,19 @@
+[general]
+name=Lines to Polygon
+description=Convert group of lines to polygon
+version=1.0
+qgisMinimumVersion=3.0
+author=Andrew Mercer
+email=mercerraa@gmail.com
+license=GPL-3.0
+
+about=Convert group of lines to polygon
+tags=vectors
+experimental=True
+
+tracker=https://github.com/mercerraa/layer_reverse/issues
+repository=https://github.com/mercerraa/layer_reverse
+homepage=https://mercerraa.github.io/
+
+hasProcessingProvider=no
+# changelog=2025.07.10 created.
