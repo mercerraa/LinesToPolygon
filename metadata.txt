@@ -11,8 +11,8 @@ about=Convert group of lines to polygon
 tags=vectors
 experimental=True
 
-tracker=https://github.com/mercerraa/layer_reverse/issues
-repository=https://github.com/mercerraa/layer_reverse
+tracker=https://github.com/mercerraa/LinesToPolygon/issues
+repository=https://github.com/mercerraa/LinesToPolygon
 homepage=https://mercerraa.github.io/
 
 hasProcessingProvider=no
