@@ -9,7 +9,7 @@ license=GPL-3.0
 
 about=Convert group of lines to polygon
 tags=vector
-experimental=True
+experimental=False
 
 tracker=https://github.com/mercerraa/LinesToPolygon/issues
 repository=https://github.com/mercerraa/LinesToPolygon
