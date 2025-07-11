@@ -9,7 +9,6 @@ from qgis.core import (
     QgsMarkerSymbol,
     QgsPalLayerSettings,
     QgsPoint,
-    QgsPointXY,
     QgsProject,
     QgsTextBufferSettings,
     QgsTextFormat,
@@ -17,8 +16,10 @@ from qgis.core import (
     QgsVectorLayerSimpleLabeling,
     QgsWkbTypes
 )
-from qgis.PyQt.QtCore import QMetaType
-from qgis.PyQt.QtCore import QVariant
+from qgis.PyQt.QtCore import (
+    QMetaType,
+    QVariant
+)
 from qgis.PyQt.QtGui import (
     QColor,
     QFont
@@ -123,7 +124,7 @@ def createMemoryLayer(structure, crs, fields, name = 'NewLayer'):
         Args:
             structure: vector type
             crs: The coordinate reference system, e.g. layer.crs()
-            fields: A list of attribute fields e.g. [QgsField('Attribute1', QVariant.String), QgsField('CreationDate', QVariant.Date), QgsField('Count', QVariant.Int), QgsField('Size', QVariant.Double)]
+            fields: A list of attribute fields e.g. [QgsField('Attribute1', QMetaType.Type.QString), QgsField('CreationDate', QMetaType.Type.QDate), QgsField('Count', QMetaType.Type.Int), QgsField('Size', QMetaType.Type.Double)]
             name: Text string for layer name in ToC
         Returns:
             vectorLayer: The vector layer for the data
@@ -256,7 +257,7 @@ def vertexCheck(layer):
     """
     featureDict = {}
     errorPointLayerLabel = 'Type'
-    errorPointLayer,errorPointProvider = createMemoryLayer('Point', layer.crs(), [QgsField(errorPointLayerLabel, QVariant.String)], 'Geometry Errors')
+    errorPointLayer,errorPointProvider = createMemoryLayer('Point', layer.crs(), [QgsField(errorPointLayerLabel, QMetaType.Type.QString)], 'Geometry Errors')
     for feature in getFeatureIterator(layer):
         id = feature.id()
         geom = feature.geometry()
@@ -341,12 +342,12 @@ def polygonise():
     layer = getActive()
     if not layer == False:
         structure = layerCheck(layer)
-        if structure is 'Line':
+        if structure == 'Line':
             errorCount, objectCount, pointList = vertexCheck(layer)
             if errorCount == 0:
                 usedPointLayerLabel = 'Order'
-                usedPointLayer, usedPointProvider = createMemoryLayer('Point', layer.crs(), [QgsField(usedPointLayerLabel, QVariant.Int)], 'Used Points')
-                vectorLayer, provider = createMemoryLayer('Polygon', layer.crs(), [QgsField('CreationDate', QVariant.Date), QgsField('FromLines', QVariant.Int)], 'Polygon From Lines')
+                usedPointLayer, usedPointProvider = createMemoryLayer('Point', layer.crs(), [QgsField(usedPointLayerLabel, QMetaType.Type.Int)], 'Used Points')
+                vectorLayer, provider = createMemoryLayer('Polygon', layer.crs(), [QgsField('CreationDate', QMetaType.Type.QDate), QgsField('FromLines', QMetaType.Type.Int)], 'Polygon From Lines')
                 plLength = len(pointList)
                 plRange = range(plLength)
                 print(f'pointList length: {plLength} range: {plRange}')
